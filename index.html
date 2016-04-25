@@ -1,0 +1,47 @@
+<!doctype html>
+<html ng-app="myApp">
+	<head>
+		<style>
+			table {
+			  border: 1px solid #666;   
+				width: 100%;
+			}
+			th {
+			  background: #f8f8f8; 
+			  font-weight: bold;    
+				padding: 1px;
+			}
+		</style>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	</head>
+	<body>
+
+		<div ng-controller="customersCtrl"> 
+
+		<p>Data Source http://services.odata.org/V2/Northwind/Northwind.svc/Customers</p>
+		<table>
+			<tr>
+				<th>Customer ID</th>
+				<th>Customer Name</th>
+				<th>Company Name</th>
+			</tr>
+			<tr ng-repeat="x in myData">
+				<td>{{x.CustomerID}}</td>
+				<td>{{x.ContactName}}</td>
+				<td>{{x.CompanyName}}</td>
+			</tr>
+		</table>
+		</div>
+
+		<script>
+		var app = angular.module('myApp', []);
+		app.controller('customersCtrl', function($scope, $http) {
+		  $http.get("https://cors-anywhere.herokuapp.com/http://services.odata.org/V2/Northwind/Northwind.svc/Customers?$format=json").then(function (response) {
+			  //console.log(response.data.d.results);
+			  $scope.myData = response.data.d.results;
+		  });
+		});
+		</script>
+
+	</body>
+</html>
