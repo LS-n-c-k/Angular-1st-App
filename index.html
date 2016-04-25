@@ -1,36 +1,30 @@
 <!doctype html>
 <html ng-app="myApp">
 	<head>
-		<style>
-			table {
-			  border: 1px solid #666;   
-				width: 100%;
-			}
-			th {
-			  background: #f8f8f8; 
-			  font-weight: bold;    
-				padding: 1px;
-			}
-		</style>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 	</head>
 	<body>
 
-		<div ng-controller="customersCtrl"> 
-
-		<p>Data Source http://services.odata.org/V2/Northwind/Northwind.svc/Customers</p>
-		<table>
-			<tr>
-				<th>Customer ID</th>
-				<th>Customer Name</th>
-				<th>Company Name</th>
-			</tr>
-			<tr ng-repeat="x in myData">
-				<td>{{x.CustomerID}}</td>
-				<td>{{x.ContactName}}</td>
-				<td>{{x.CompanyName}}</td>
-			</tr>
-		</table>
+		<div ng-controller="customersCtrl" class="container"> 
+			<h2>Basic Table</h2>
+			<p>Data Source http://services.odata.org/V2/Northwind/Northwind.svc/Customers</p>
+			<table class="table">
+				<tr>
+					<th>Customer ID</th>
+					<th>Customer Name</th>
+					<th>Company Name</th>
+				</tr>
+				<tr ng-repeat="x in myData">
+					<td>{{x.CustomerID}}</td>
+					<td>{{x.ContactName}}</td>
+					<td>{{x.CompanyName}}</td>
+				</tr>
+			</table>
 		</div>
 
 		<script>
